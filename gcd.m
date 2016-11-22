@@ -4,8 +4,7 @@ function [ out ] = gcd( a,b )
 
 while b ~= 0
     temp = b;
-%     TODO: use our own mod implementation
-    b = mod(a,b);
+    b = modulo(a,b);
     a = temp;
 end
 
