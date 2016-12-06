@@ -5,7 +5,7 @@ function [ prime ] = isPrime( n, k )
         prime = 1;
         return;
     end
-    if(n == 1 || modulo(n,2) == 0)
+    if(n <= 1 || modulo(n,2) == 0)
         prime = 0;
         return;
     end
