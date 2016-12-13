@@ -1,7 +1,7 @@
 function [ inv ] = inverseMod( a, n )
 %UNTITLED Summary of this function goes here
 %   (q) (r) (q mod r) Q floor(q/r) R T
-    if(gcd(a, n) ~= 1)
+    if(~coprime(a,n))
         inv = -1;
         return;
     end

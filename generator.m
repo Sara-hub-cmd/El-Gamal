@@ -8,7 +8,7 @@ for i=2:1:p
     for j=0:1:p
 %         We calculate the value, if it was already obtained, we stop this
 %         loop, otherwise we write 1 in the array
-        temp = modulo(i.^j,p);
+        temp = modExp(i,j,p);
         if check(1,temp) == 1
             break;
         else
