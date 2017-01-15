@@ -1,6 +1,5 @@
 function [ prime ] = isPrime( n, k )
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+%ISPRIME Returns 1 if n is prime, 0 otherwise, tested over k iterations
     if(n == 2)
         prime = 1;
         return;

@@ -1,6 +1,6 @@
 function [ out ] = gcd( a,b )
 %GCD Function to compute the gcd of two numbers
-%   We use the euclidean algorithm of the gcd
+%   We use the euclidean algorithm for the gcd
 
 if b == 0
     out = a;

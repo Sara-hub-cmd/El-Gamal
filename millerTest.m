@@ -1,6 +1,6 @@
 function [ pass ] = millerTest( a,n )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+%MILLER_TEST Function that computes the miller test for n
+
     %find n-1 = 2^s * d
     for i=0:floor(log2(n-1))+1
         if(modulo((n-1), (2.^i)) == 0)

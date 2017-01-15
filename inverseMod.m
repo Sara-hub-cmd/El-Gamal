@@ -1,6 +1,5 @@
 function [ inv ] = inverseMod( a, n )
-%UNTITLED Summary of this function goes here
-%   (q) (r) (q mod r) Q floor(q/r) R T
+%INVERSE_MOD Function that computes the inverse of a mod n (a^(-1) mod n)
     if(~coprime(a,n))
         inv = -1;
         return;

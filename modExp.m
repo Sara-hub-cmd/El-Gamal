@@ -1,6 +1,6 @@
 function [ out ] = modExp( a,b,n )
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
+%MODEXP Function that computes the modular exponentiation of a^b mod n
+
 initA = a;
 if b == 0
     out = 1;

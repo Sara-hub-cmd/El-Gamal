@@ -17,4 +17,81 @@
 \begin{document}
 \maketitle
 \newpage
+\section{Introduction}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\section{Fonctions réalisées}
+\subsection{Fonction modulo}
+\inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../modulo.m}
+
+\subsection{Fonction PGCD}
+\inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../gcd.m}
+\subsection{Fonction copremier}
+\inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../coprime.m}
+\subsection{Fonction générateur}
+\inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../generator.m}
+\subsection{Fonction inverse modulaire}
+\inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../inverseMod.m}
+\subsection{Fonction exponentiation modulaire}
+\inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../modExp.m}
+\subsection{Fonctions pour nombres premiers}
+\subsubsection{Test de miller}
+\inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../millerTest.m}
+\subsubsection{Test de primalité}
+\inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../isPrime.m}
+\subsubsection{Générateur de nombre premier aléatoire}
+\inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../randomPrime.m}
+\subsection{Fonction de génération des clés}
+\inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../generateKeys.m}
+\subsection{Fonction de signature}
+\inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../signature.m}
+\subsection{Fonction de vérification de la signature}
+\inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../signatureCheck.m}
+\section{Exemple d'exécution}
+\begin{verbatim}
+>> [p,alpha,a,beta] = generateKeys
+
+p =
+
+   857
+
+
+alpha =
+
+     3
+
+
+a =
+
+   711
+
+
+beta =
+
+   431
+
+>> message = 42
+
+message =
+
+    42
+
+>> [gamma,delta] = signature(message,alpha,p,a)
+
+gamma =
+
+   504
+
+
+delta =
+
+   474
+
+>> signatureCheck(delta,gamma,beta,alpha,p,message)
+
+ans =
+
+     1
+\end{verbatim}
+\section{Conclusion}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 \end{document}

@@ -1,6 +1,5 @@
 function [ out ] = coprime( a,b )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+%COPRIME Function that returns 1 if a is coprime to b, 0 otherwise
     out = gcd(a,b) == 1;
 end
 
