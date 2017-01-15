@@ -1,5 +1,6 @@
 function [ inv ] = inverseMod( a, n )
 %INVERSE_MOD Function that computes the inverse of a mod n (a^(-1) mod n)
+%The algorithm used is the extended euclidean algorithm
     if(~coprime(a,n))
         inv = -1;
         return;
