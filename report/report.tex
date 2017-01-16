@@ -18,34 +18,50 @@
 \maketitle
 \newpage
 \section{Introduction}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Nous avons réalisé une implémentation de l'algorithme de signature d'El-Gamal en Matlab. Cette implémentation comprend la génération des clés publiques et privées, des fonctions d'arithmétique modulaire ainsi qu'une fonction de signature et de vérification de la signature.
 \section{Fonctions réalisées}
 \subsection{Fonction modulo}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../modulo.m}
-
+Cette fonction retourne donc la valeur du modulo de a par rapport à b. Son implémentation est réalisée à l'aide de la division entière de a par b.
 \subsection{Fonction PGCD}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../gcd.m}
+Il s'agit ici de la version récursive de l'algorithme d'Euclide pour la recherche du PGCD de deux nombres. Nous remplaçons à chaque itération la valeur de b par le modulo de a par b, jusqu'à ce que b soit égal à 0. Dans ce cas, la valeur du PGCD est la valeur de a.
 \subsection{Fonction copremier}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../coprime.m}
+Implémentation très simple d'une fonction booléenne pour vérifier si a et b sont copremiers, nous nous servons ici de la fonction PGCD écrite plus haut.
 \subsection{Fonction générateur}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../generator.m}
+Fonction qui retourne un générateur de $\mathbb{Z}/p\mathbb{Z}*$. Pour ce faire nous testons toutes les valeurs potentielles de générateur et nous vérifions à l'aide d'un tableau que nous obtenons toutes les valeurs comprises dans $[1,p-1]$ en élevant les valeurs du candidat générateur aux puissances comprises dans $[0,p]$ et en prenant leur modulo par rapport à $p$. Dès que nous obtenons une valeur deux fois avant d'avoir rempli tout le tableau, nous pouvons passer au prochain candidat, car il ne s'agit pas d'un générateur. Nous renvoyons $-1$ si aucun générateur n'a pu être trouvé.
 \subsection{Fonction inverse modulaire}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../inverseMod.m}
+Implémentation de l'inverse modulaire de a par rapport à n basé sur la méthode vue en cours. Nous retournons -1 si l'inverse n'existe pas (si a et n sont copremiers)
 \subsection{Fonction exponentiation modulaire}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../modExp.m}
+Implémentation de l'exponentiation modulaire
+\begin{equation*}
+	a^b \mod n
+\end{equation*}
+Ici, nous faisons d'abord un test, car si b vaut 0, il suffit de retourner 1 directement, puis ensuite, nous multiplions par a en prenant le modulo du résultat à chaque itération.
 \subsection{Fonctions pour nombres premiers}
+Ici nous regroupons plusieurs fonctions, parmi lesquelles un test de primalité par exemple, qui vont nous servir à générer un nombre premier aléatoire pour la génération de nos clés.
 \subsubsection{Test de miller}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../millerTest.m}
+Implémentation de l'algorithme de Miller-Rabin pour tester la primalité d'un nombre n.
 \subsubsection{Test de primalité}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../isPrime.m}
+Test de primalité, qui utilise la fonction de Miller-Rabin écrite plus haut sur k itérations, nous retournons un booléen spécifiant si n est premier ou pas.
 \subsubsection{Générateur de nombre premier aléatoire}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../randomPrime.m}
+Fonction qui permet de générer un nombre premier aléatoire dans l'intervalle $[min,max]$ Nous tirons des nombres aléatoirement dans cet intervalle tant que nous ne tombons pas sur un nombre premier, le test de primalité sera celui écrit plus haut.
 \subsection{Fonction de génération des clés}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../generateKeys.m}
+Cette fonction sert à générer toutes les valeurs composant les clés publiques et privées d'El-Gamal, la fonction retourne 4 valeurs: $(p,\alpha,a,\beta)$
 \subsection{Fonction de signature}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../signature.m}
+Cette fonction va signer le message $x$ en utilisant à l'aide des clés générées plus haut (plus précisément la clé privée $a$, ainsi que $\alpha$ et $p$). Elle va nous renvoyer les valeurs de $\gamma$ et $\delta$
 \subsection{Fonction de vérification de la signature}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../signatureCheck.m}
+Fonction qui va vérifier la signature et va nous retourner une valeur booléenne pour attester de sa validité, elle prend en paramètre le message $x$ ainsi que la clé publique et la signature générée.
 \section{Exemple d'exécution}
 \begin{verbatim}
 >> [p,alpha,a,beta] = generateKeys
@@ -93,5 +109,5 @@ ans =
      1
 \end{verbatim}
 \section{Conclusion}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+En conclusion, on peut dire que ce TP nous a aidé à mieux comprendre la théorie vue en cours. Nous avons également eu l'opportunité d'implémenter un algorithme de test de primalité, ce qui pourra nous servir par la suite dans d'autres travaux.
 \end{document}

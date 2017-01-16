@@ -1,5 +1,5 @@
 function [ gen ] = generator( p )
-%GENERATOR Function that returns a generator of Z/Zp*
+%GENERATOR Function that returns a generator of Z/pZ*
 
 for i=2:1:p
 %     Check array, zeros if value not obtained yet
