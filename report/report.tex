@@ -31,7 +31,7 @@ Il s'agit ici de la version récursive de l'algorithme d'Euclide pour la recherc
 Implémentation très simple d'une fonction booléenne pour vérifier si a et b sont copremiers, nous nous servons ici de la fonction PGCD écrite plus haut.
 \subsection{Fonction générateur}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../generator.m}
-Fonction qui retourne un générateur de $\mathbb{Z}/p\mathbb{Z}*$. Pour ce faire nous testons toutes les valeurs potentielles de générateur et nous vérifions à l'aide d'un tableau que nous obtenons toutes les valeurs comprises dans $[1,p-1]$ en élevant les valeurs du candidat générateur aux puissances comprises dans $[0,p]$ et en prenant leur modulo par rapport à $p$. Dès que nous obtenons une valeur deux fois avant d'avoir rempli tout le tableau, nous pouvons passer au prochain candidat, car il ne s'agit pas d'un générateur. Nous renvoyons $-1$ si aucun générateur n'a pu être trouvé.
+Fonction qui retourne un générateur de $\mathbb{Z}/p\mathbb{Z}^*$. Pour ce faire nous testons toutes les valeurs potentielles de générateur et nous vérifions à l'aide d'un tableau que nous obtenons toutes les valeurs comprises dans $[1,p-1]$ en élevant les valeurs du candidat générateur aux puissances comprises dans $[0,p]$ et en prenant leur modulo par rapport à $p$. Dès que nous obtenons une valeur deux fois avant d'avoir rempli tout le tableau, nous pouvons passer au prochain candidat, car il ne s'agit pas d'un générateur. Nous renvoyons $-1$ si aucun générateur n'a pu être trouvé.
 \subsection{Fonction inverse modulaire}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../inverseMod.m}
 Implémentation de l'inverse modulaire de a par rapport à n basé sur la méthode vue en cours. Nous retournons -1 si l'inverse n'existe pas (si a et n sont copremiers)
@@ -46,10 +46,10 @@ Ici, nous faisons d'abord un test, car si b vaut 0, il suffit de retourner 1 dir
 Ici nous regroupons plusieurs fonctions, parmi lesquelles un test de primalité par exemple, qui vont nous servir à générer un nombre premier aléatoire pour la génération de nos clés.
 \subsubsection{Test de miller}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../millerTest.m}
-Implémentation de l'algorithme de Miller-Rabin pour tester la primalité d'un nombre n.
+Implémentation du test de Miller servant au test de primalité de Miller-Rabin énoncé ci-dessous.
 \subsubsection{Test de primalité}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../isPrime.m}
-Test de primalité, qui utilise la fonction de Miller-Rabin écrite plus haut sur k itérations, nous retournons un booléen spécifiant si n est premier ou pas.
+Test de primalité, qui utilise l'algorithme de Miller-Rabin sur k itérations. Nous retournons un booléen spécifiant si n est premier ou pas.
 \subsubsection{Générateur de nombre premier aléatoire}
 \inputminted[breaklines,breaksymbol=, linenos, frame=single, stepnumber=5,tabsize=2]{Matlab}{../randomPrime.m}
 Fonction qui permet de générer un nombre premier aléatoire dans l'intervalle $[min,max]$ Nous tirons des nombres aléatoirement dans cet intervalle tant que nous ne tombons pas sur un nombre premier, le test de primalité sera celui écrit plus haut.
